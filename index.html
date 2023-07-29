@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>redirecting</title>
+</head>
+
+<body>
+    <script>
+       window.onload = function () {
+            fetch("https://api.sunrise-sunset.org/json?lat=44.3042&lng=-69.7821&formatted=0").then((response) => {
+                response.json().then((data) => {
+                    const currentDate = new Date();
+                    const sunset = new Date(data.results.sunset);
+                    const sunrise = new Date(data.results.sunrise);
+
+                    if (currentDate < sunset && currentDate > sunrise){
+                        window.location.href = "https://en.wikipedia.org/wiki/Furby";
+                    }
+                    else {
+                        window.location.href = "https://en.wikipedia.org/wiki/Gremlin";
+                    }
+                });
+                
+            });
+        }
+    </script>
+</body>
+
+</html>
